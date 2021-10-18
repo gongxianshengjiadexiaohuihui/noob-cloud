@@ -2,6 +2,19 @@ spring:
   application:
     name: consumer-service
 
+  autoconfigure:
+    exclude: org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationAutoConfiguration
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+    consul:
+      discovery:
+        hostname: localhost
+        port: 8500
+
+
 server:
   port: 9002
 

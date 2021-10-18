@@ -10,11 +10,16 @@
 
     <properties>
         <spring.cloud.version>2020.0.3</spring.cloud.version>
+        <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
         <spring.boot.version>2.4.6</spring.boot.version>
+        <java.version>11</java.version>
         <maven.complie.plugin.version>3.8.1</maven.complie.plugin.version>
-        <java.version>8</java.version>
     </properties>
 
+    <modules>
+        <module>noob-cloud-business-demo</module>
+        <module>noob-cloud-registration-center</module>
+    </modules>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -31,15 +36,28 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.complie.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
