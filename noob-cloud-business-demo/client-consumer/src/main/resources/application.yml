@@ -1,3 +1,6 @@
+server:
+  port: 9002
+
 spring:
   application:
     name: consumer-service
@@ -9,14 +12,16 @@ spring:
     nacos:
       discovery:
         server-addr: http://localhost:8848
+        metadata:
+          preserved.heart.beat.interval: 1000
+          preserved.heart.beat.timeout: 3000
+          preserved.heart.delete.timeout: 3000
     consul:
       discovery:
         hostname: localhost
         port: 8500
-
-
-server:
-  port: 9002
+        heartbeat:
+          enabled: true
 
 eureka:
   client:
